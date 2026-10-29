@@ -1,5 +1,3 @@
-import json
-
 import requests
 
 
@@ -12,8 +10,6 @@ r = requests.get(BASE_URL)
 # TODO: print the welcome message
 print(f"Status Code: {r.status_code}")
 print(f"Result: {r.json()['message']}")
-
-
 
 
 data = {

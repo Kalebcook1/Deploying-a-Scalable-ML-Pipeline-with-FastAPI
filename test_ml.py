@@ -21,10 +21,12 @@ CAT_FEATURES = [
 ]
 DATA_PATH = os.path.join(os.path.dirname(__file__), "data", "census.csv")
 
+
 @pytest.fixture(scope="module")
 def data():
     """A reproducible 2000 row sample of data"""
     return pd.read_csv(DATA_PATH).sample(2000, random_state=0)
+
 
 @pytest.fixture(scope="module")
 def processed(data):
@@ -44,6 +46,8 @@ def processed(data):
     return X_train, y_train, X_test, y_test
 
 # TODO: implement the first test. Change the function name and input as needed
+
+
 def test_train_model_algorithm(processed):
     """
     # train_model should return a fitted RandomForestClassifier
@@ -77,6 +81,7 @@ def test_compute_model_metrics():
     assert precision == pytest.approx(1.0)
     assert recall == pytest.approx(2 / 3)
     assert fbeta == pytest.approx(0.8)
+
 
 def test_train_test_split_sizes(data):
     """

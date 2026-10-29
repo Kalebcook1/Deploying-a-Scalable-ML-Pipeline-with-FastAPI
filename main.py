@@ -25,18 +25,22 @@ class Data(BaseModel):
     capital_gain: int = Field(..., example=0, alias="capital-gain")
     capital_loss: int = Field(..., example=0, alias="capital-loss")
     hours_per_week: int = Field(..., example=40, alias="hours-per-week")
-    native_country: str = Field(..., example="United-States", alias="native-country")
+    native_country: str = Field(..., example="United-States",
+                                alias="native-country")
+
 
 project_path = os.path.dirname(os.path.abspath(__file__))
 
-path = os.path.join(project_path, "model", "encoder.pkl") # TODO: enter the path for the saved encoder 
+# TODO: enter the path for the saved encoder
+path = os.path.join(project_path, "model", "encoder.pkl")
 encoder = load_model(path)
 
-path = os.path.join(project_path, "model", "model.pkl") # TODO: enter the path for the saved model 
+# TODO: enter the path for the saved model
+path = os.path.join(project_path, "model", "model.pkl")
 model = load_model(path)
 
 # TODO: create a RESTful API using FastAPI
-app = FastAPI() # your code here
+app = FastAPI()  # your code here
 
 
 # TODO: create a GET on the root giving a welcome message
@@ -73,5 +77,6 @@ async def post_inference(data: Data):
         training=False,
         encoder=encoder,
     )
-    _inference = inference(model, data_processed) # your code here to predict the result using data_processed
+    # your code here to predict the result using data_processed
+    _inference = inference(model, data_processed)
     return {"result": apply_label(_inference)}

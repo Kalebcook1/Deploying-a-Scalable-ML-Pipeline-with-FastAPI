@@ -5,6 +5,8 @@ from sklearn.ensemble import RandomForestClassifier
 # TODO: add necessary import
 
 # Optional: implement hyperparameter tuning.
+
+
 def train_model(X_train, y_train):
     """
     Trains a machine learning model and returns it.
@@ -67,6 +69,7 @@ def inference(model, X):
     # TODO: implement the function
     return model.predict(X)
 
+
 def save_model(model, path):
     """ Serializes model to a file.
 
@@ -80,6 +83,7 @@ def save_model(model, path):
     # TODO: implement the function
     with open(path, "wb") as f:
         pickle.dump(model, f)
+
 
 def load_model(path):
     """ Loads pickle file from `path` and returns it."""
